@@ -39,17 +39,29 @@ module.exports = (robot) ->
     delete data[name]
     return true
 
+  # ドキュメント名を取得
+  getDoc = (name) ->
+    data = getData()
+    if data[name] is undefined
+      return false
+    else
+      return data[name]
+
   robot.respond /docs (.+)/i, (msg) ->
     items = msg.match[1].split(/\s+/)
     head  = items[0]
+    docName = items[1]
 
     # set, dump,deleteの場合、return
     if head is 'set' or head is 'list' or head is 'delete'
       return
 
-    docName = items[1]
-    docs = items[2]
-    msg.send "#{docName}はこちら！ → #{docs}"
+    doc = getDoc items[0].substring(1)
+    if not items
+      msg.send "登録されていない資料だよ！"
+      return
+
+    msg.send "#{docName}はこちら！ → #{doc}"
 
   # ドキュメントを設定
   robot.respond /docs set (.+)/i, (msg) ->
