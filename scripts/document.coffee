@@ -39,14 +39,6 @@ module.exports = (robot) ->
     delete data[name]
     return true
 
-  # ドキュメント名を取得
-  getDoc = (name) ->
-    data = getData()
-    if data[name] is undefined
-      return false
-    else
-      return data[name]
-
   robot.respond /docs (.+)/i, (msg) ->
     items = msg.match[1].split(/\s+/)
     head  = items[0]
@@ -55,8 +47,9 @@ module.exports = (robot) ->
     if head is 'set' or head is 'list' or head is 'delete'
       return
 
-    docs = items[1]
-    msg.send "「#{docs}」 が えらばれた▼"
+    docName = items[1]
+    docs = items[2]
+    msg.send "#{docName}はこちら！ → #{docs}"
 
   # ドキュメントを設定
   robot.respond /docs set (.+)/i, (msg) ->
