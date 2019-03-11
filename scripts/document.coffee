@@ -68,6 +68,11 @@ module.exports = (robot) ->
   robot.respond /docs set (.+)/i, (msg) ->
     items = msg.match[1].split(/\s+/)
     docName = items[0]
+    items.shift()
+    doc = items
+    setDoc docName, doc
+    msg.send "グループ：#{docName}を設定したよ！"
+
     doc = items[1]
     setDoc docName, doc
     msg.send "資料#{docName}を設定したよ！"
