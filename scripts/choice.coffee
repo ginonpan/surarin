@@ -1,12 +1,12 @@
 # Description
-#   ランダム
+#   スラリンがランダムにチョイスしてくれます
 #
 # Commands:
-#   hubot choice hoge fuga piyo
-#   hubot choice $<groupname>
-#   hubot choice set <group name>
-#   hubot choice delete <group name>
-#   hubot dump
+#   surarin choice hoge fuga piyo
+#   surarin choice $<groupname>
+#   surarin choice set <group name>
+#   surarin choice delete <group name>
+#   surarin dump
 #
 # Author:
 #   @ginonpan
@@ -64,7 +64,7 @@ module.exports = (robot) ->
         return
 
     choice = _.sample items
-    msg.send "「#{choice}」さんよろしくね！"
+    msg.send "「#{choice}」 が えらばれた▼"
 
   # グループを設定
   robot.respond /choice set (.+)/i, (msg) ->

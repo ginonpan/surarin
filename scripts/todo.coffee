@@ -1,10 +1,10 @@
 # Description:
-#   TODO管理機能
+#   スラリンによるTODO管理機能です
 #
 # Commands:
-#   hubot todo add TASK
-#   hubot todo list
-#   hubot todo done N
+#   surarin todo add TASK
+#   surarin todo list
+#   surarin todo done N
 #
 # Author:
 #   @ginonpan
