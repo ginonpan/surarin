@@ -3,7 +3,7 @@
 #
 # Commands:
 #   surarin docs set <name> <doc>
-#   surarin $<name>
+#   surarin <name>
 #   surarin docs delete <name>
 #   surarin docs list
 #
@@ -54,13 +54,6 @@ module.exports = (robot) ->
     # set, dump,deleteの場合、return
     if head is 'set' or head is 'list' or head is 'delete'
       return
-
-    # 第一引数がドキュメント名指定の場合
-    if /\$(.+)/.test items[0]
-      items = getDoc items[0].substring(1)
-      if not items
-        msg.send "登録されてないよ！"
-        return
 
     docs = items[1]
     msg.send "「#{docs}」 が えらばれた▼"
