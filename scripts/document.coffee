@@ -71,11 +71,7 @@ module.exports = (robot) ->
     items.shift()
     doc = items
     setDoc docName, doc
-    msg.send "グループ：#{docName}を設定したよ！"
-
-    doc = items[1]
-    setDoc docName, doc
-    msg.send "資料#{docName}を設定したよ！"
+    msg.send "資料：#{docName}を設定したよ！"
 
   # ドキュメントを削除
   robot.respond /docs delete (.+)/i, (msg) ->
