@@ -55,10 +55,9 @@ module.exports = (robot) ->
   robot.respond /docs set (.+)/i, (msg) ->
     items = msg.match[1].split(/\s+/)
     docName = items[0]
-    items.shift()
     doc = items[1]
     setDoc docName, doc
-    msg.send "資料を#{docName}に設定したよ！"
+    msg.send "資料#{docName}を設定したよ！"
 
   # ドキュメントを削除
   robot.respond /docs delete (.+)/i, (msg) ->
