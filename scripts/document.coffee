@@ -68,7 +68,7 @@ module.exports = (robot) ->
       msg.send "資料：#{name}は存在しないよ！"
 
   # for debug
-  robot.respond /choice list/i, (msg) ->
+  robot.respond /docs list/i, (msg) ->
     data = getData()
     if _.size(data) is 0
       msg.send "登録されている資料はないよー"
