@@ -13,7 +13,7 @@ cheerio   = require 'cheerio'
 request   = require 'request'
 
 module.exports = (robot) ->
-  endpoint = 'http://tabelog.com/rst/rstsearch'
+  endpoint = 'https://tabelog.com/rst/rstsearch'
 
   exists = (array) ->
     return array.stars? and array.stars != '' and array.score? and array.score != ''
@@ -29,8 +29,8 @@ module.exports = (robot) ->
           params.keyword = s.slice(5)
           console.log 'keyword: ' + params.keyword
         else if s.match /^ in /i
-          params.location = s.slice(4)
-          console.log 'location: ' + params.location
+          params.zone = s.slice(4)
+          console.log 'zone: ' + params.zone
 
     unless params.type
       d = new Date()
@@ -44,8 +44,8 @@ module.exports = (robot) ->
       message = "オススメのお店は見つからなかったよ…"
       if params.keyword
         message += ' for ' + params.keyword
-      if params.location
-        message += ' in ' + params.location
+      if params.zone
+        message += ' in ' + params.zone
       restaurant = _.sample(restaurants, 1)[0]
       console.log restaurant
       if restaurant
@@ -60,16 +60,16 @@ module.exports = (robot) ->
 
   findRestaurants = (params, callback) ->
     qs = []
-    if params.type == 'lunch'
+    if params.type == 'ランチ'
       qs.push 'SrtT=rtl'
-    else if params.type == 'dinner'
+    else if params.type == 'ディナー'
       qs.push 'SrtT=rtd'
     else
       qs.push 'SrtT=rt'
     if params.keyword
       qs.push 'sk=' + encodeURIComponent params.keyword
-    if params.location
-      qs.push 'sa=' + encodeURIComponent params.location
+    if params.zone
+      qs.push 'sa=' + encodeURIComponent params.zone
 
     url = endpoint + '?' + qs.join('&')
     console.log "url: " + url
