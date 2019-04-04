@@ -64,7 +64,7 @@ module.exports = (robot) ->
         return
 
     choice = _.sample items
-    msg.send "「#{choice}」 が えらばれた▼"
+    msg.send "「@#{choice}」 が えらばれた▼"
 
   # グループを設定
   robot.respond /choice set (.+)/i, (msg) ->
